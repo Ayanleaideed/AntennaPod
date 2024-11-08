@@ -9,11 +9,10 @@ android {
     namespace "de.danoeh.antennapod"
 
     defaultConfig {
-        // Version code schema:
-        // "1.2.3-beta4"    -> 1020304
-        // "1.2.3"          -> 1020395
         versionCode 3050095
         versionName "3.5.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -61,6 +60,7 @@ android {
 }
 
 dependencies {
+    implementation project(":event")
     implementation project(":event")
     implementation project(':model')
     implementation project(':net:common')
@@ -133,6 +133,17 @@ dependencies {
     androidTestImplementation "androidx.test:runner:$runnerVersion"
     androidTestImplementation "androidx.test:rules:$rulesVersion"
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+
+    // Testing Dependencies
+    androidTestImplementation "androidx.test.uiautomator:uiautomator:$rootProject.uiAutomatorVersion"
+    androidTestImplementation "androidx.test:runner:$rootProject.runnerVersion"
+    androidTestImplementation "androidx.test:rules:$rootProject.rulesVersion"
+    androidTestImplementation "androidx.test.ext:junit:1.1.5"
+    androidTestImplementation "org.awaitility:awaitility:$rootProject.awaitilityVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$rootProject.espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$rootProject.espressoVersion"
+
 }
 
 if (project.hasProperty("antennaPodPlayPublisherCredentials")) {
